@@ -1,15 +1,26 @@
 <template>
-<section id= "article_content">
-    <div class="card">
+
+<form class="d-flex flex-column justify-content-center">
+ <div class="input-group mx-sm-3 mb-2">
+ <label class="visually-hidden" for="search">Search</label>
+ <input type="search" name="search" v-model="searchTerm"
+id="search" class="form-control mb-2 mr-sm-2" placeholder="Enter
+search term here" />
+ <button class="btn btn-primary mb-2">Search</button>
+ </div>
+ <p>You are searching for {{ searchTerm }}</p>
+ </form>
+ 
+ 
+ <div class="card">
         <div v-for="article in articles">
-            <img class="art_img" v-bind:src= article.urlToImage />
             <div class="card-body">
+            <img class="art_img" v-bind:src= article.urlToImage />
             <h5>{{ article.title }}</h5>
             <p>{{ article.description }}</p>
             </div>
         </div>
     </div>
-</section>
     
 </template>
 
@@ -43,25 +54,17 @@ created() {
 
 <style>
 
-section#article_content {
+.card {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-row-gap: 1em;
+    width: 65rem;
+    margin: center;
 }
 
-.card{
-    width: 20rem;
-    margin: auto;
-}
-
-.card-body{
-    display: flex;
-    flex-flow: row wrap;
-    align-items: flex-start;
-}
 
 .art_img{
-    object-fit: contain;
+    object-fit: cover;
     height: 10em;
 }
 
